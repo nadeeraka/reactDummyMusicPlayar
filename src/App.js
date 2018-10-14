@@ -1,15 +1,39 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const name = 'Nimantha Nadeeraka';
-const green ='#FF2345';
-const mystyle ={color:green , 'font-size':'50px'}
-const defaultTextColour = {color:'red'};
-const defaultStyles = {
+
+const myOb = {
+  name: 'Nimantha Nadeeraka',
+  mystyle : {
+    color: '#FF2345',
+    'font-size': '50px'
+    },
+defaultStyles :{
   color: 'red',
   fontFamily: 'verdana'
-};
+},
 
+}
+ 
+class App extends Component {
+  
+  constructor(props)
+  {
+    super(props);
+    this.state ={name:myOb.name}
+  }
+  render() {
+    return ( <div className = "App" >
+      <h1 style = { myOb.mystyle} > {myOb.name} </h1> 
+      <Jkroling name={this.state.name} / >
+      <Filter / >
+      <Playlist />
+
+
+      </div>
+    );
+  }
+}
 
 class Filter extends Component
 {
@@ -24,14 +48,27 @@ class Filter extends Component
 
 class Playlist extends Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.state ={serverFakeData:myOb.name}
+  }
   render()
   {
-    return(<div style={{...defaultStyles,display:'inline-block'}}>
+    return(<div style={{...myOb.defaultStyles,display:'inline-block'}}>
       <image/>
-      <h3>Playlist Name</h3>
+       <h3> {this.state.serverFakeData}
+      Playlist Name </h3>
       <ul>
       <li>Playlist 1</li>
       </ul>
+      <ul >
+        <li> Playlist 1 </li> 
+        </ul>
+        <ul>
+          <li> Playlist 1 </li> 
+          </ul>
+
       
       </div>)
   }
@@ -42,27 +79,15 @@ class Jkroling extends Component
   render()
   {
     return(<div>
-      <p style={defaultTextColour}>Number Text    Number Text</p>
+      <p style={myOb.defaultTextColour}>
+      { this.props.state && this.props.state.name }
+      Number Text Number Text < /p>
       
       </div>)
   }
 }
 
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      <h1 style={mystyle}>{name}</h1>
-      <Jkroling />
-      <Filter/>
-      <Playlist/>
-      < Playlist / >
-      < Playlist / >
-      
-        </div>
-    );
-  }
-}
+
 
 export default App;
